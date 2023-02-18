@@ -23,10 +23,11 @@ function M.github_linker_command(...)
     local repo = vim.fn.systemlist("git config --get remote.origin.url")[1]
     local branch = vim.fn.systemlist("git symbolic-ref --short HEAD")[1]
     local start_line, end_line = args[1], args[2]
+    -- save to clipboard
     if start_line and end_line then
-        print(M.github_linker(start_line, end_line))
+        vim.fn.setreg("*", M.github_linker(start_line, end_line))
     else
-        print(M.github_linker())
+        vim.fn.setreg("*", M.github_linker())
     end
 end
 
