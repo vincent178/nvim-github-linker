@@ -7,7 +7,6 @@ function M.github_linker(start_line, end_line)
     local repo_url = vim.fn.systemlist("git config --get remote.origin.url")[1]
     local repo_path = vim.fn.substitute(repo_url, '\\(.*github.com\\)\\(:\\|/\\)\\([^/]*\\)/\\(.*\\)\\.git',
         'https://github.com/\\3/\\4', '')
-    print(repo_path)
     local branch_name = vim.fn.systemlist("git symbolic-ref --short HEAD")[1]
     local base_url = repo_path .. '/blob/' .. branch_name
     local range = 'L' .. line_number
