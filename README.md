@@ -31,11 +31,9 @@ require("github-linker").setup({
 })
 ```
 
-Note: above configuration is default value, you don't need specify any of them if you don't want to override.
-
-* mappings: If set to true, GithubLink will create default mappings for the :GithubLink command in Normal mode and the : command in Visual mode. Default value is false.
+* mappings: If set to true, GithubLink will create default mappings for the `:GithubLink` command in Normal mode and the : command in Visual mode. Default value is true.
 * default_remote: The default Git remote to use when generating links. Default value is "origin".
-* copy_to_clipboard: If set to true, GithubLink will copy the generated link to the system clipboard. Default value is false.
+* copy_to_clipboard: If set to true, GithubLink will copy the generated link to the system clipboard. Default value is true.
 
 ## License
 GithubLink is released under the MIT license. See the LICENSE file for more details.
