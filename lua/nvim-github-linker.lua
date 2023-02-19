@@ -50,7 +50,6 @@ function M.github_linker_command()
     if vim.fn.line("'<") == 0 and vim.fn.line("'>") == 0 then
         start_line = vim.fn.line('.')
         end_line = start_line
-
     else
         -- If no range is provided, use the current line
         start_line = vim.fn.line("'<")
@@ -71,9 +70,5 @@ function M.github_linker_command()
     end
 
 end
-
--- if vim.g.nvim_github_linker_mappings then
---     vim.cmd([[command! -range GithubLink lua require('nvim-github-linker').github_linker_command(<line1>,<line2>)]])
--- end
 
 return M
