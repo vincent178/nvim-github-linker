@@ -3,10 +3,8 @@ local M = {}
 function M.github_linker(start_line, end_line)
     local line_number = start_line or vim.fn.line('.')
     local end_line_number = end_line or line_number
-    local file_name = vim.fn.expand('%:t')
 
     local current_file = vim.fn.expand('%:p')
-    local current_dir = vim.fn.expand('%:p:h')
     local project_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
     local relative_path = vim.fn.fnamemodify(current_file, ':gs?' .. project_root .. '??')
 
@@ -24,7 +22,7 @@ function M.github_linker(start_line, end_line)
     return full_url
 end
 
-function M.github_linker_command(start_line, end_line)
+function M.github_linker_command()
     local start_line, end_line
 
     -- Check if a range is provided
@@ -37,9 +35,6 @@ function M.github_linker_command(start_line, end_line)
         start_line = vim.fn.line("'<")
         end_line = vim.fn.line("'>")
     end
-
-    local repo = vim.fn.systemlist("git config --get remote.origin.url")[1]
-    local branch = vim.fn.systemlist("git symbolic-ref --short HEAD")[1]
 
     -- save to clipboard
     if start_line and end_line then
