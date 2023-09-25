@@ -16,7 +16,7 @@ function M.setup(opts)
     vim.g.nvim_github_linker_copy_to_clipboard = options.copy_to_clipboard
 
     if options.mappings then
-        vim.cmd([[command! -range GithubLink2 lua require('nvim-github-linker').github_linker_command(<line1>,<line2>)]])
+        vim.cmd([[command! -range GithubLink lua require('nvim-github-linker').github_linker_command(<line1>,<line2>)]])
     end
 end
 
