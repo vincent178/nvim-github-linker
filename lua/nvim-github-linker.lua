@@ -16,7 +16,7 @@ function M.setup(opts)
     vim.g.nvim_github_linker_copy_to_clipboard = options.copy_to_clipboard
 
     if options.mappings then
-        vim.cmd([[command! -range GithubLink lua require('nvim-github-linker').github_linker_command(<line1>,<line2>)]])
+        vim.cmd([[command! -range GithubLink2 lua require('nvim-github-linker').github_linker_command(<line1>,<line2>)]])
     end
 end
 
@@ -28,10 +28,11 @@ function M.github_linker(start_line, end_line)
     local project_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
     local relative_path = vim.fn.fnamemodify(current_file, ':gs?' .. project_root .. '??')
 
-    local repo_url = vim.fn.systemlist("git config --get remote." .. vim.g.nvim_github_linker_default_remote .. ".url")[
-        1]
-    local repo_path = vim.fn.substitute(repo_url, '\\(.*github.com\\)\\(:\\|/\\)\\([^/]*\\)/\\(.*\\)\\.git',
-        'https://github.com/\\3/\\4', '')
+    local raw_repo_url = vim.fn.systemlist("git config --get remote." ..
+        vim.g.nvim_github_linker_default_remote .. ".url")[1]
+    local repo_url = raw_repo_url:gsub(':', '/'):gsub('git@', 'https://'):gsub('%.git', '')
+    local repo_path = vim.fn.substitute(repo_url, '\\(.*github.com\\)\\(/\\)\\([^/]*\\)/\\(.*\\)\\.git', '\\1\\2\\3/\\4',
+        '')
     local branch_name = vim.fn.systemlist("git symbolic-ref --short HEAD")[1]
     local base_url = repo_path .. '/blob/' .. branch_name
     local range = 'L' .. line_number
@@ -68,7 +69,6 @@ function M.github_linker_command()
     else
         print(url)
     end
-
 end
 
 return M
