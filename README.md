@@ -10,9 +10,10 @@ To install GithubLink, you can use your preferred plugin manager for Neovim. Her
 
 ```lua
 use {
-    "vincent178/neovim-github-linker",
+    "vincent178/nvim-github-linker",
+    cmd = "GithubLink",
     config = function()
-        require("neovim-github-linker").setup()
+        require("nvim-github-linker").setup()
     end,
 }
 ```
@@ -24,7 +25,7 @@ Once GithubLink is installed, you can use it by running the :GithubLink command 
 To customize the behavior of GithubLink, you can pass options to the setup() function. Here's an example:
 
 ```lua
-require("github-linker").setup({
+require("nvim-github-linker").setup({
     mappings = true,
     default_remote = "origin",
     copy_to_clipboard = true,
