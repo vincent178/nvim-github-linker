@@ -64,7 +64,7 @@ function M.github_linker_command()
     end
 
     if vim.g.nvim_github_linker_copy_to_clipboard then
-        vim.fn.setreg("*", url)
+        vim.fn.setreg("+", url)
     else
         print(url)
     end
