@@ -15,3 +15,19 @@ describe('build_base_url', function()
         assert(output == expected)
     end)
 end)
+
+describe('build_anchor', function()
+    it('support single line', function()
+        local input = "L14"
+        local output = plugin.build_anchor(14, 14)
+        local expected = "L14"
+        assert(output == expected)
+    end)
+
+    it('support multi line', function()
+        local input = "L14-L18"
+        local output = plugin.build_anchor(14, 18)
+        local expected = "L14-L18"
+        assert(output == expected)
+    end)
+end)
