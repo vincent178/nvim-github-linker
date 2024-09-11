@@ -13,7 +13,7 @@ function M.setup(opts)
     vim.g.nvim_github_linker_copy_to_clipboard = options.copy_to_clipboard
 
     if options.mappings then
-        vim.cmd([[command! -range GithubLink lua require('nvim-github-linker').github_linker_command(<line1>,<line2>)]])
+        vim.cmd([[command! -range GithubLink lua require('nvim-github-linker').github_link(<line1>,<line2>)]])
     end
 end
 
@@ -47,17 +47,13 @@ function M.get_relative_path()
     return vim.fn.fnamemodify(current_file, ':gs?' .. project_root .. '??')
 end
 
-function M.github_linker(start_line, end_line)
+function M.github_link(start_line, end_line)
     local remote_url = M.get_remote_url(vim.g.nvim_github_linker_default_remote)
     local brand_name = M.get_brand_name()
     local base_url = M.build_base_url(remote_url, brand_name)
     local relative_path = M.get_relative_path()
     local anchor = M.build_anchor(start_line, end_line)
-    return base_url .. relative_path .. '#' .. anchor
-end
-
-function M.github_linker_command(start_line, end_line)
-    local url = M.github_linker(start_line, end_line)
+    local url = base_url .. relative_path .. '#' .. anchor
 
     if vim.g.nvim_github_linker_copy_to_clipboard then
         vim.fn.setreg("+", url)
