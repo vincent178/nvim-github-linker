@@ -2,7 +2,7 @@
 
 # GithubLink
 
-GithubLink is a Neovim plugin that allows you to generate a GitHub link to the current line or selected code in your Neovim editor. It's a handy tool for sharing code snippets with others or quickly jumping to a specific line in your repository on GitHub.
+GithubLink is a small plugin that generate a sharable GitHub link, it works for both single line or a range of lines.
 
 ## Installation
 
@@ -35,6 +35,12 @@ require("nvim-github-linker").setup({
 * mappings: If set to true, GithubLink will create default mappings for the `:GithubLink` command in Normal mode and the : command in Visual mode. Default value is true.
 * default_remote: The default Git remote to use when generating links. Default value is "origin".
 * copy_to_clipboard: If set to true, GithubLink will copy the generated link to the system clipboard. Default value is true.
+
+## Test
+
+```bash
+$ make
+```
 
 ## License
 GithubLink is released under the MIT license. See the LICENSE file for more details.
