@@ -29,7 +29,7 @@ function M.get_remote_url(remote_name)
     return vim.fn.systemlist("git config --get remote." .. remote_name .. ".url")[1]
 end
 
-function M.get_brand_name()
+function M.get_branch_name()
     return vim.fn.systemlist("git symbolic-ref --short HEAD")[1]
 end
 
@@ -49,8 +49,8 @@ end
 
 function M.github_link(start_line, end_line)
     local remote_url = M.get_remote_url(vim.g.nvim_github_linker_default_remote)
-    local brand_name = M.get_brand_name()
-    local base_url = M.build_base_url(remote_url, brand_name)
+    local branch_name = M.get_branch_name()
+    local base_url = M.build_base_url(remote_url, branch_name)
     local relative_path = M.get_relative_path()
     local anchor = M.build_anchor(start_line, end_line)
     local url = base_url .. relative_path .. '#' .. anchor
