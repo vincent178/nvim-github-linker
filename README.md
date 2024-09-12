@@ -6,41 +6,29 @@ GithubLink is a small plugin that generate a sharable GitHub link, it works for 
 
 ## Installation
 
-To install GithubLink, you can use your preferred plugin manager for Neovim. Here's an example using the `packer.nvim` plugin manager:
+To install GithubLink, you can use your preferred plugin manager for Neovim. Here's an example with [vim-plug](https://github.com/junegunn/vim-plug):
 
 ```lua
-use {
-    "vincent178/nvim-github-linker",
-    cmd = "GithubLink",
-    config = function()
-        require("nvim-github-linker").setup()
-    end,
-}
+local vim = vim
+local Plug = vim.fn['plug#']
+
+vim.call('plug#begin')
+
+-- your other plugins
+Plug("vincent178/nvim-github-linker")
+
+vim.call('plug#end')
+
+require("nvim-github-linker").setup()
 ```
 
 ## Usage
 
-Once GithubLink is installed, you can use it by running the :GithubLink command in Normal mode, or by using the : command in Visual mode to select a range of code and generate a link.
-
-To customize the behavior of GithubLink, you can pass options to the setup() function. Here's an example:
-
-```lua
-require("nvim-github-linker").setup({
-    mappings = true,
-    default_remote = "origin",
-    copy_to_clipboard = true,
-})
-```
-
-* mappings: If set to true, GithubLink will create default mappings for the `:GithubLink` command in Normal mode and the : command in Visual mode. Default value is true.
-* default_remote: The default Git remote to use when generating links. Default value is "origin".
-* copy_to_clipboard: If set to true, GithubLink will copy the generated link to the system clipboard. Default value is true.
+Once GithubLink is installed, you can use it by running the :GithubLink command in Normal mode or Visual mode
 
 ## Test
 
-```bash
-$ make
-```
+This section is for plugin developer, GithubLink use [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) to test. If you already installed plenary, you can run tests via command `:PlenaryBustedDirectory tests`. The tests also could be run standalone via `make test` or `make` for short.
 
 ## License
 GithubLink is released under the MIT license. See the LICENSE file for more details.
