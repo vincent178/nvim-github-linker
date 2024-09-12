@@ -24,7 +24,7 @@ require("nvim-github-linker").setup()
 
 ## Usage
 
-Once GithubLink is installed, you can use it by running the `:GithubLink` command in Normal mode or Visual mode
+Once GithubLink is installed, you can use it by running the `:GithubLink` command in Normal mode or Visual mode to generate the Github link.
 
 ## Test
 
