@@ -24,11 +24,11 @@ require("nvim-github-linker").setup()
 
 ## Usage
 
-Once GithubLink is installed, you can use it by running the :GithubLink command in Normal mode or Visual mode
+Once GithubLink is installed, you can use it by running the `:GithubLink` command in Normal mode or Visual mode
 
 ## Test
 
-This section is for plugin developer, GithubLink use [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) to test. If you already installed plenary, you can run tests via command `:PlenaryBustedDirectory tests`. The tests also could be run standalone via `make test` or `make` for short.
+This section is for plugin developer, GithubLink use [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) to test. If you already installed plenary, you can run tests via command `:PlenaryBustedDirectory tests`. You can also run tests standalone via `make test` or `make` for short.
 
 ## License
 GithubLink is released under the MIT license. See the LICENSE file for more details.
